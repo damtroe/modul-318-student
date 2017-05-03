@@ -12,7 +12,7 @@ using SwissTransport;
 namespace Damian.T_Trainsetter_Projekt_M318
 {
     public partial class Form1 : Form
-    {
+    {        
         public ITransport Transit = new Transport();
         public Form1()
         {
@@ -37,44 +37,50 @@ namespace Damian.T_Trainsetter_Projekt_M318
                 foreach (Connection c in connections.ConnectionList)
                 {
 
-                    listBox1.Items.Add("Von " + c.From.Station.Name + " Nach " + c.To.Station.Name + c.To.Departure + c.To.Arrival + c.Duration);
+                    listBox1.Items.Add("Von " + c.From.Station.Name + " Nach " + c.To.Station.Name + c.From.Departure + c.To.Arrival + c.Duration);
+                }
+                if (comboBox1.Text == "" || comboBox2.Text == "")
+                {
+                    MessageBox.Show("Abfahrtsort muss ausgewählt werden!");
                 }
             }
         }
+
          private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             
         } 
   
-
+        //Uhrzeit
         private void timer1_Tick(object sender, EventArgs e)
         {
             label3.Text = Convert.ToString(DateTime.Now.Hour) + " : " + Convert.ToString(DateTime.Now.Minute) + " : " + Convert.ToString(DateTime.Now.Second);
         }
 
-            
+
+
+        //DropBox Events
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
             string suche = comboBox1.Text;
 
-            ITransport testee = new Transport();
-            var stations = testee.GetStations(suche);
+            ITransport Transit = new Transport();
+            var stations = Transit.GetStations(suche);
             foreach (Station s in stations.StationList)
             {
-                comboBox1.Items.Add("" + s.Name  );
+            comboBox1.Items.Add("" + s.Name  );
 
 
             }
         }
 
-    
         private void comboBox2_DropDown(object sender, EventArgs e)
         {
             string suche = comboBox2.Text;
 
-            ITransport testee = new Transport();
-            var stations = testee.GetStations(suche);
+            ITransport Transit = new Transport();
+            var stations = Transit.GetStations(suche);
             foreach (Station s in stations.StationList)
             {
                 comboBox2.Items.Add("" + s.Name);
@@ -86,14 +92,8 @@ namespace Damian.T_Trainsetter_Projekt_M318
 
 
 
-        }
 
-        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
-        {
-
-        }
-
-       
+        }     
     }
 }
 
