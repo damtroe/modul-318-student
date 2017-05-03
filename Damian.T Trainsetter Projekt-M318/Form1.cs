@@ -29,13 +29,13 @@ namespace Damian.T_Trainsetter_Projekt_M318
             string Connections = cbBox1.Text;
             {
 
-                listBox1.Items.Clear();
+                listBox1.Items.Clear();               
                 ITransport Transit = new Transport();
                 var connections = Transit.GetConnections(cbBox1.Text, cbBox2.Text);
                 foreach (Connection c in connections.ConnectionList)
                 {
-
-                    listBox1.Items.Add("Von " + c.From.Station.Name + " Nach " + c.To.Station.Name + c.From.Departure + c.To.Arrival + c.Duration);
+                    listBox1.Items.Add(" " + "Startstation" + "\t" + "Endstation" + "\t" + "Abfahrt" + "\t" + "Ankunft" + "\t" + "Dauer");
+                    listBox1.Items.Add(" " + c.From.Station.Name + "\t" + c.To.Station.Name +"\t\t"+ c.From.Departure +"\t"+ c.To.Arrival +"\t"+ c.Duration+" Min");
                 }
                 if (cbBox1.Text == "" || cbBox2.Text == "")
                 {
