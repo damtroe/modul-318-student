@@ -36,9 +36,10 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.SuspendLayout();
             // 
             // label1
@@ -88,7 +89,7 @@
             this.label3.Location = new System.Drawing.Point(16, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 24);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 11;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // listBox1
@@ -101,26 +102,38 @@
             this.listBox1.Size = new System.Drawing.Size(454, 172);
             this.listBox1.TabIndex = 8;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(77, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(77, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(77, 52);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 10;
+            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(77, 90);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 12;
+            this.comboBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
+            // 
+            // domainUpDown1
+            // 
+            this.domainUpDown1.Location = new System.Drawing.Point(397, 52);
+            this.domainUpDown1.Name = "domainUpDown1";
+            this.domainUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.domainUpDown1.TabIndex = 13;
+            this.domainUpDown1.Text = "domainUpDown1";
+            this.domainUpDown1.SelectedItemChanged += new System.EventHandler(this.domainUpDown1_SelectedItemChanged);
             // 
             // Form1
             // 
@@ -128,8 +141,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(561, 490);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.domainUpDown1);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePicker1);
@@ -152,9 +166,10 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DomainUpDown domainUpDown1;
     }
 }
 
