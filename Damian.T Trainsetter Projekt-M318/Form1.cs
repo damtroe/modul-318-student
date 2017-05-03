@@ -28,28 +28,25 @@ namespace Damian.T_Trainsetter_Projekt_M318
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Connections = comboBox1.Text;
+            string Connections = cbBox1.Text;
             {
 
                 listBox1.Items.Clear();
                 ITransport Transit = new Transport();
-                var connections = Transit.GetConnections(comboBox1.Text, comboBox2.Text);
+                var connections = Transit.GetConnections(cbBox1.Text, cbBox2.Text);
                 foreach (Connection c in connections.ConnectionList)
                 {
 
                     listBox1.Items.Add("Von " + c.From.Station.Name + " Nach " + c.To.Station.Name + c.From.Departure + c.To.Arrival + c.Duration);
                 }
-                if (comboBox1.Text == "" || comboBox2.Text == "")
+                if (cbBox1.Text == "" || cbBox2.Text == "")
                 {
                     MessageBox.Show("Abfahrtsort muss ausgewählt werden!");
                 }
             }
         }
 
-         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            
-        } 
+        
   
         //Uhrzeit
         private void timer1_Tick(object sender, EventArgs e)
@@ -63,13 +60,13 @@ namespace Damian.T_Trainsetter_Projekt_M318
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
-            string suche = comboBox1.Text;
+            string suche = cbBox1.Text;
 
             ITransport Transit = new Transport();
             var stations = Transit.GetStations(suche);
             foreach (Station s in stations.StationList)
             {
-            comboBox1.Items.Add("" + s.Name  );
+            cbBox1.Items.Add("" + s.Name  );
 
 
             }
@@ -77,23 +74,54 @@ namespace Damian.T_Trainsetter_Projekt_M318
 
         private void comboBox2_DropDown(object sender, EventArgs e)
         {
-            string suche = comboBox2.Text;
+            string suche = cbBox2.Text;
 
             ITransport Transit = new Transport();
             var stations = Transit.GetStations(suche);
             foreach (Station s in stations.StationList)
             {
-                comboBox2.Items.Add("" + s.Name);
+                cbBox2.Items.Add("" + s.Name);
 
 
             }
 
+        }
+
+            //Auto vervollständigungs Methode
+
+            private void Autovervollständigung(ComboBox cb)
+        {
+            string cbtext = cb.Text;
+
+            if (cbtext.Length >= 3)
+            {
+
+                Stations stations = new Stations();
+                stations = Transit.GetStations(cbtext + ",");
+                cb.Items.Clear();
+                cb.DroppedDown = true;
+                cb.SelectionStart = cb.Text.Length;
+                foreach (Station s in stations.StationList)
+                {
+                    cb.Items.Add(s.Name);
+
+                }
+
+            }
+        }
+            //Auto vervollständigungs Event
+        private void cbBox1_TextUpdate(object sender, EventArgs e)
+        {
+            Autovervollständigung(cbBox1);
+        }
+
+        private void cbBox2_TextUpdate(object sender, EventArgs e)
+        {
+            Autovervollständigung(cbBox2);
+        }
 
 
 
-
-
-        }     
     }
 }
 
