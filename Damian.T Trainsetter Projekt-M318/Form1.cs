@@ -24,8 +24,6 @@ namespace Damian.T_Trainsetter_Projekt_M318
             label3.Text = Convert.ToString(DateTime.Now.Hour);
     }
 
-     
-
         private void button1_Click(object sender, EventArgs e)
         {
             string Connections = cbBox1.Text;
@@ -46,8 +44,7 @@ namespace Damian.T_Trainsetter_Projekt_M318
             }
         }
 
-        
-  
+         
         //Uhrzeit
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -67,8 +64,6 @@ namespace Damian.T_Trainsetter_Projekt_M318
             foreach (Station s in stations.StationList)
             {
             cbBox1.Items.Add("" + s.Name  );
-
-
             }
         }
 
@@ -81,10 +76,7 @@ namespace Damian.T_Trainsetter_Projekt_M318
             foreach (Station s in stations.StationList)
             {
                 cbBox2.Items.Add("" + s.Name);
-
-
             }
-
         }
 
             //Auto vervollständigungs Methode
@@ -119,9 +111,6 @@ namespace Damian.T_Trainsetter_Projekt_M318
         {
             Autovervollständigung(cbBox2);
         }
-
-
-
     }
 }
 
