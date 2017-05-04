@@ -28,49 +28,43 @@ namespace Damian.T_Trainsetter_Projekt_M318
         {
             string Connections = cbBox1.Text;
             {
-                listView1.Items.Clear();
-                
+
+
                 ITransport Transit = new Transport();
-                var connections = Transit.GetConnections(cbBox1.Text, cbBox2.Text);
-                foreach (Connection c in connections.ConnectionList)
+                Connections Connection = new Connections();
+                Connection = Transit.GetConnections(cbBox1.Text, cbBox2.Text);
+                if (lstview1.Columns.Count == 0)
                 {
+                    lstview1.Columns.Add("", 0);
+                    lstview1.Columns.Add("Startstation", 120);
+                    lstview1.Columns.Add("Endstation", 120);
+                    lstview1.Columns.Add("Abfahrt", 120);
+                    lstview1.Columns.Add("Ankunft", 120);
+                    lstview1.Columns.Add("Dauer", 120);
+
+                }
+                lstview1.Items.Clear();
+
+                foreach (Connection c in Connection.ConnectionList)
+                {
+
+                    ListViewItem item1 = new ListViewItem("");
                     DateTime Dt = Convert.ToDateTime(c.From.Departure);
                     DateTime Ar = Convert.ToDateTime(c.To.Arrival);
                     string Departure = Dt.ToShortTimeString();
                     string Arrival = Ar.ToShortTimeString();
                     string[] Duration = c.Duration.Split(':');
-                    //lstbox.Items.Add(" " + "Startstation" + "\t" + "Endstation" + "\t" + "Abfahrt" + "\t" + "Ankunft" + "\t" + "Dauer");
-                   // lstbox.Items.Add(" " + c.From.Station.Name + "\t" + c.To.Station.Name + "\t\t" + Departure + "\t" + Arrival + "\t" + Duration[1] + " Min");
-                
 
-
-                listView1.Columns.Add("Startstation");
-                listView1.Columns.Add("Endstation");
-                listView1.Columns.Add("Abfahrt");
-                listView1.Columns.Add("Ankunft");
-                listView1.Columns.Add("Dauer");
-
-                ListViewItem item1 = new ListViewItem(c.From.Station.Name);
-                
-
-
-                item1.SubItems.Add(c.From.Station.Name);
-                item1.SubItems.Add(c.To.Station.Name);
-                item1.SubItems.Add(Departure);
-                item1.SubItems.Add(Arrival);
-                item1.SubItems.Add(Duration[1]+"Min");
-
-                listView1.Items.Add(item1);
-                
-
-                listView1.View = View.Details;
-                listView1.FullRowSelect = true;
-
+                    item1.SubItems.Add(c.From.Station.Name);
+                    item1.SubItems.Add(c.To.Station.Name);
+                    item1.SubItems.Add(Departure);
+                    item1.SubItems.Add(Arrival);
+                    item1.SubItems.Add(Duration[1] + "Min");
+                    lstview1.Items.Add(item1);
+                    lstview1.View = View.Details;
+                    lstview1.FullRowSelect = true;
 
                 }
-
-
-
 
                 if (cbBox1.Text == "" || cbBox2.Text == "")
                 {
@@ -153,17 +147,27 @@ namespace Damian.T_Trainsetter_Projekt_M318
         {
             btn2.Visible = false;
         }
-
+        //
         private void btn2_Click(object sender, EventArgs e)
         {
-            StringBuilder weiterleiten = new StringBuilder();
-            foreach (object selectedItem in listView1.Items)
+            if (lstview1.Items.Count != 0)
             {
-                weiterleiten.AppendLine(selectedItem.ToString());
+                MessageBox.Show("Startstation: " + lstview1.Items[0].SubItems[1].Text + "\n" +
+                                "Endstation: " + lstview1.Items[0].SubItems[2].Text + "\n" +
+                                "Abfahrt: " + lstview1.Items[0].SubItems[3].Text + "\n" +
+                                 "Ankunft: " + lstview1.Items[0].SubItems[4].Text + "\n" +
+                                "Dauer: " + lstview1.Items[0].SubItems[5].Text);
             }
-            MessageBox.Show(Convert.ToString(weiterleiten));
+            Clipboard.SetText("Startstation: " + lstview1.Items[0].SubItems[1].Text + "\n" +
+                                "Endstation: " + lstview1.Items[0].SubItems[2].Text + "\n" +
+                                "Abfahrt: " + lstview1.Items[0].SubItems[3].Text + "\n" +
+                                 "Ankunft: " + lstview1.Items[0].SubItems[4].Text + "\n" +
+                                "Dauer: " + lstview1.Items[0].SubItems[5].Text);
         }
 
+        private void lstview1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

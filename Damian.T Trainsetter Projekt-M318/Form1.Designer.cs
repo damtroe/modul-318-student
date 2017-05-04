@@ -39,7 +39,7 @@
             this.cbBox1 = new System.Windows.Forms.ComboBox();
             this.cbBox2 = new System.Windows.Forms.ComboBox();
             this.btn2 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstview1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -132,13 +132,14 @@
             this.btn2.UseVisualStyleBackColor = true;
             this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
-            // listView1
+            // lstview1
             // 
-            this.listView1.Location = new System.Drawing.Point(12, 247);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(853, 231);
-            this.listView1.TabIndex = 14;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstview1.Location = new System.Drawing.Point(12, 247);
+            this.lstview1.Name = "lstview1";
+            this.lstview1.Size = new System.Drawing.Size(853, 231);
+            this.lstview1.TabIndex = 14;
+            this.lstview1.UseCompatibleStateImageBehavior = false;
+            this.lstview1.SelectedIndexChanged += new System.EventHandler(this.lstview1_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -148,7 +149,7 @@
             this.BackColor = System.Drawing.Color.Crimson;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(877, 490);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstview1);
             this.Controls.Add(this.btn2);
             this.Controls.Add(this.cbBox2);
             this.Controls.Add(this.cbBox1);
@@ -177,7 +178,7 @@
         private System.Windows.Forms.ComboBox cbBox1;
         private System.Windows.Forms.ComboBox cbBox2;
         private System.Windows.Forms.Button btn2;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstview1;
     }
 }
 
