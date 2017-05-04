@@ -17,22 +17,22 @@ namespace Damian.T_Trainsetter_Projekt_M318
         public Form1()
         {
             InitializeComponent();
+            dateTimePicker2.Value = DateTime.Now;
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            label3.Text = Convert.ToString(DateTime.Now.Hour);
-        }
 
+        //Verbindung Suchen Funktion
         private void button1_Click(object sender, EventArgs e)
         {
             string Connections = cbBox1.Text;
             {
+                string date = "&date=" + dateTimePicker2.Value.Year + "-" + dateTimePicker2.Value.Month + "-" + dateTimePicker2.Value.Day;
+                string time = "&time=" + dateTimePicker2.Value.Hour + ":" + dateTimePicker2.Value.Minute;
 
 
                 ITransport Transit = new Transport();
                 Connections Connection = new Connections();
-                Connection = Transit.GetConnections(cbBox1.Text, cbBox2.Text);
+                Connection = Transit.GetConnections(cbBox1.Text, cbBox2.Text, date, time);
                 if (lstview1.Columns.Count == 0)
                 {
                     lstview1.Columns.Add("", 0);
@@ -71,17 +71,14 @@ namespace Damian.T_Trainsetter_Projekt_M318
                     MessageBox.Show("Abfahrtsort muss ausgewählt werden!");
                 }
 
-                btn2.Visible = true;
+                btnweiterleiten.Visible = true;
 
             }
         }
 
 
         //Uhrzeit
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            label3.Text = Convert.ToString(DateTime.Now.Hour) + " : " + Convert.ToString(DateTime.Now.Minute) + " : " + Convert.ToString(DateTime.Now.Second);
-        }
+
 
 
         //DropBox Events
@@ -145,29 +142,41 @@ namespace Damian.T_Trainsetter_Projekt_M318
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btn2.Visible = false;
+            btnweiterleiten.Visible = false;
         }
-        //
+        //Weiterleiten Funktion
         private void btn2_Click(object sender, EventArgs e)
         {
             if (lstview1.Items.Count != 0)
             {
-                MessageBox.Show("Startstation: " + lstview1.Items[0].SubItems[1].Text + "\n" +
-                                "Endstation: " + lstview1.Items[0].SubItems[2].Text + "\n" +
-                                "Abfahrt: " + lstview1.Items[0].SubItems[3].Text + "\n" +
-                                 "Ankunft: " + lstview1.Items[0].SubItems[4].Text + "\n" +
-                                "Dauer: " + lstview1.Items[0].SubItems[5].Text);
+                MessageBox.Show("Verbindung erfolgreich in Zwischen Ablage kopiert!" + "\n" +
+                 "Startstation: " + lstview1.Items[0].SubItems[1].Text + "\n" +
+                 "Endstation: " + lstview1.Items[0].SubItems[2].Text + "\n" +
+                 "Abfahrt: " + lstview1.Items[0].SubItems[3].Text + "\n" +
+                 "Ankunft: " + lstview1.Items[0].SubItems[4].Text + "\n" +
+                 "Dauer: " + lstview1.Items[0].SubItems[5].Text
+                );
             }
             Clipboard.SetText("Startstation: " + lstview1.Items[0].SubItems[1].Text + "\n" +
-                                "Endstation: " + lstview1.Items[0].SubItems[2].Text + "\n" +
-                                "Abfahrt: " + lstview1.Items[0].SubItems[3].Text + "\n" +
-                                 "Ankunft: " + lstview1.Items[0].SubItems[4].Text + "\n" +
-                                "Dauer: " + lstview1.Items[0].SubItems[5].Text);
+             "Endstation: " + lstview1.Items[0].SubItems[2].Text + "\n" +
+             "Abfahrt: " + lstview1.Items[0].SubItems[3].Text + "\n" +
+             "Ankunft: " + lstview1.Items[0].SubItems[4].Text + "\n" +
+             "Dauer: " + lstview1.Items[0].SubItems[5].Text);
         }
 
         private void lstview1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("FeedBack An: datroe95@web.de\n\n Bei Problemen: 0799298401 ");
         }
     }
 }

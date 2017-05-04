@@ -32,14 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnsuchen = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.cbBox1 = new System.Windows.Forms.ComboBox();
             this.cbBox2 = new System.Windows.Forms.ComboBox();
-            this.btn2 = new System.Windows.Forms.Button();
+            this.btnweiterleiten = new System.Windows.Forms.Button();
             this.lstview1 = new System.Windows.Forms.ListView();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.btnFeedback = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,40 +65,22 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nach:                       ";
             // 
-            // btn1
+            // btnsuchen
             // 
-            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.Location = new System.Drawing.Point(12, 192);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(261, 35);
-            this.btn1.TabIndex = 4;
-            this.btn1.Text = "Verbindung Jetzt Suchen";
-            this.btn1.UseVisualStyleBackColor = true;
-            this.btn1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(123, 146);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(314, 29);
-            this.dateTimePicker1.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 29);
-            this.label3.TabIndex = 11;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.btnsuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsuchen.Location = new System.Drawing.Point(12, 192);
+            this.btnsuchen.Name = "btnsuchen";
+            this.btnsuchen.Size = new System.Drawing.Size(261, 35);
+            this.btnsuchen.TabIndex = 4;
+            this.btnsuchen.Text = "Verbindung Jetzt Suchen";
+            this.btnsuchen.UseVisualStyleBackColor = true;
+            this.btnsuchen.Click += new System.EventHandler(this.button1_Click);
+            this.btnsuchen.Enter += new System.EventHandler(this.button1_Click);
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // cbBox1
             // 
@@ -106,7 +89,7 @@
             this.cbBox1.Location = new System.Drawing.Point(123, 48);
             this.cbBox1.Name = "cbBox1";
             this.cbBox1.Size = new System.Drawing.Size(212, 28);
-            this.cbBox1.TabIndex = 10;
+            this.cbBox1.TabIndex = 1;
             this.cbBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             this.cbBox1.TextUpdate += new System.EventHandler(this.cbBox1_TextUpdate);
             // 
@@ -117,45 +100,71 @@
             this.cbBox2.Location = new System.Drawing.Point(123, 82);
             this.cbBox2.Name = "cbBox2";
             this.cbBox2.Size = new System.Drawing.Size(212, 28);
-            this.cbBox2.TabIndex = 12;
+            this.cbBox2.TabIndex = 2;
             this.cbBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
             this.cbBox2.TextUpdate += new System.EventHandler(this.cbBox2_TextUpdate);
             // 
-            // btn2
+            // btnweiterleiten
             // 
-            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2.Location = new System.Drawing.Point(388, 48);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(114, 62);
-            this.btn2.TabIndex = 13;
-            this.btn2.Text = "Resultate weiterleiten";
-            this.btn2.UseVisualStyleBackColor = true;
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            this.btnweiterleiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnweiterleiten.Location = new System.Drawing.Point(388, 48);
+            this.btnweiterleiten.Name = "btnweiterleiten";
+            this.btnweiterleiten.Size = new System.Drawing.Size(114, 62);
+            this.btnweiterleiten.TabIndex = 5;
+            this.btnweiterleiten.Text = "Resultate weiterleiten";
+            this.btnweiterleiten.UseVisualStyleBackColor = true;
+            this.btnweiterleiten.Click += new System.EventHandler(this.btn2_Click);
             // 
             // lstview1
             // 
-            this.lstview1.Location = new System.Drawing.Point(12, 247);
+            this.lstview1.Location = new System.Drawing.Point(12, 233);
             this.lstview1.Name = "lstview1";
             this.lstview1.Size = new System.Drawing.Size(853, 231);
             this.lstview1.TabIndex = 14;
             this.lstview1.UseCompatibleStateImageBehavior = false;
             this.lstview1.SelectedIndexChanged += new System.EventHandler(this.lstview1_SelectedIndexChanged);
             // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy               HH.mm";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(12, 155);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(215, 20);
+            this.dateTimePicker2.TabIndex = 3;
+            this.dateTimePicker2.Value = new System.DateTime(2017, 5, 4, 14, 16, 0, 0);
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 10;
+            // 
+            // btnFeedback
+            // 
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(706, -1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(175, 35);
+            this.btnFeedback.TabIndex = 15;
+            this.btnFeedback.Text = "Feedback/Probleme";
+            this.btnFeedback.UseVisualStyleBackColor = true;
+            this.btnFeedback.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
-            this.AcceptButton = this.btn2;
+            this.AcceptButton = this.btnweiterleiten;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(877, 490);
+            this.Controls.Add(this.btnFeedback);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.lstview1);
-            this.Controls.Add(this.btn2);
+            this.Controls.Add(this.btnweiterleiten);
             this.Controls.Add(this.cbBox2);
             this.Controls.Add(this.cbBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.btn1);
+            this.Controls.Add(this.btnsuchen);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -171,14 +180,15 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnsuchen;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ComboBox cbBox1;
         private System.Windows.Forms.ComboBox cbBox2;
-        private System.Windows.Forms.Button btn2;
+        private System.Windows.Forms.Button btnweiterleiten;
         private System.Windows.Forms.ListView lstview1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button btnFeedback;
     }
 }
 
