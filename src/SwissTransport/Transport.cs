@@ -32,7 +32,7 @@ namespace SwissTransport
             {
                 var readToEnd = new StreamReader(responseStream).ReadToEnd();
                 var stationboard =
-                    JsonConvert.DeserializeObject<StationBoardRoot>(readToEnd);
+                 JsonConvert.DeserializeObject<StationBoardRoot>(readToEnd);
                 return stationboard;
             }
 
@@ -49,7 +49,7 @@ namespace SwissTransport
             {
                 var readToEnd = new StreamReader(responseStream).ReadToEnd();
                 var connections =
-                    JsonConvert.DeserializeObject<Connections>(readToEnd);
+                 JsonConvert.DeserializeObject<Connections>(readToEnd);
                 return connections;
             }
 
@@ -63,7 +63,7 @@ namespace SwissTransport
 
             webProxy.Credentials = CredentialCache.DefaultNetworkCredentials;
             request.Proxy = webProxy;
-            
+
             return request;
         }
     }

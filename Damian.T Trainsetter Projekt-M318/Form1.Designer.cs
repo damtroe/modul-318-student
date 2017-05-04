@@ -35,10 +35,11 @@
             this.btn1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.cbBox1 = new System.Windows.Forms.ComboBox();
             this.cbBox2 = new System.Windows.Forms.ComboBox();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -92,16 +93,6 @@
             this.label3.TabIndex = 11;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(12, 258);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(853, 204);
-            this.listBox1.TabIndex = 8;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -130,16 +121,37 @@
             this.cbBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
             this.cbBox2.TextUpdate += new System.EventHandler(this.cbBox2_TextUpdate);
             // 
+            // btn2
+            // 
+            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.Location = new System.Drawing.Point(388, 48);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(114, 62);
+            this.btn2.TabIndex = 13;
+            this.btn2.Text = "Resultate weiterleiten";
+            this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(12, 247);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(853, 231);
+            this.listView1.TabIndex = 14;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
+            this.AcceptButton = this.btn2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(877, 490);
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.btn2);
             this.Controls.Add(this.cbBox2);
             this.Controls.Add(this.cbBox1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btn1);
@@ -149,6 +161,7 @@
             this.Name = "Form1";
             this.Text = "TrainSetter";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,10 +173,11 @@
         private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ComboBox cbBox1;
         private System.Windows.Forms.ComboBox cbBox2;
+        private System.Windows.Forms.Button btn2;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 

@@ -12,7 +12,7 @@ using SwissTransport;
 namespace Damian.T_Trainsetter_Projekt_M318
 {
     public partial class Form1 : Form
-    {        
+    {
         public ITransport Transit = new Transport();
         public Form1()
         {
@@ -22,35 +22,72 @@ namespace Damian.T_Trainsetter_Projekt_M318
         private void label3_Click(object sender, EventArgs e)
         {
             label3.Text = Convert.ToString(DateTime.Now.Hour);
-    }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string Connections = cbBox1.Text;
             {
-
-                listBox1.Items.Clear();               
+                listView1.Items.Clear();
+                
                 ITransport Transit = new Transport();
                 var connections = Transit.GetConnections(cbBox1.Text, cbBox2.Text);
                 foreach (Connection c in connections.ConnectionList)
                 {
-                    listBox1.Items.Add(" " + "Startstation" + "\t" + "Endstation" + "\t" + "Abfahrt" + "\t" + "Ankunft" + "\t" + "Dauer");
-                    listBox1.Items.Add(" " + c.From.Station.Name + "\t" + c.To.Station.Name +"\t\t"+ c.From.Departure +"\t"+ c.To.Arrival +"\t"+ c.Duration+" Min");
+                    DateTime Dt = Convert.ToDateTime(c.From.Departure);
+                    DateTime Ar = Convert.ToDateTime(c.To.Arrival);
+                    string Departure = Dt.ToShortTimeString();
+                    string Arrival = Ar.ToShortTimeString();
+                    string[] Duration = c.Duration.Split(':');
+                    //lstbox.Items.Add(" " + "Startstation" + "\t" + "Endstation" + "\t" + "Abfahrt" + "\t" + "Ankunft" + "\t" + "Dauer");
+                   // lstbox.Items.Add(" " + c.From.Station.Name + "\t" + c.To.Station.Name + "\t\t" + Departure + "\t" + Arrival + "\t" + Duration[1] + " Min");
+                
+
+
+                listView1.Columns.Add("Startstation");
+                listView1.Columns.Add("Endstation");
+                listView1.Columns.Add("Abfahrt");
+                listView1.Columns.Add("Ankunft");
+                listView1.Columns.Add("Dauer");
+
+                ListViewItem item1 = new ListViewItem(c.From.Station.Name);
+                
+
+
+                item1.SubItems.Add(c.From.Station.Name);
+                item1.SubItems.Add(c.To.Station.Name);
+                item1.SubItems.Add(Departure);
+                item1.SubItems.Add(Arrival);
+                item1.SubItems.Add(Duration[1]+"Min");
+
+                listView1.Items.Add(item1);
+                
+
+                listView1.View = View.Details;
+                listView1.FullRowSelect = true;
+
+
                 }
+
+
+
+
                 if (cbBox1.Text == "" || cbBox2.Text == "")
                 {
                     MessageBox.Show("Abfahrtsort muss ausgewählt werden!");
                 }
+
+                btn2.Visible = true;
+
             }
         }
 
-         
+
         //Uhrzeit
         private void timer1_Tick(object sender, EventArgs e)
         {
             label3.Text = Convert.ToString(DateTime.Now.Hour) + " : " + Convert.ToString(DateTime.Now.Minute) + " : " + Convert.ToString(DateTime.Now.Second);
         }
-
 
 
         //DropBox Events
@@ -63,7 +100,7 @@ namespace Damian.T_Trainsetter_Projekt_M318
             var stations = Transit.GetStations(suche);
             foreach (Station s in stations.StationList)
             {
-            cbBox1.Items.Add("" + s.Name  );
+                cbBox1.Items.Add("" + s.Name);
             }
         }
 
@@ -79,9 +116,9 @@ namespace Damian.T_Trainsetter_Projekt_M318
             }
         }
 
-            //Auto vervollständigungs Methode
+        //Auto vervollständigungs Methode
 
-            private void Autovervollständigung(ComboBox cb)
+        private void Autovervollständigung(ComboBox cb)
         {
             string cbtext = cb.Text;
 
@@ -101,7 +138,7 @@ namespace Damian.T_Trainsetter_Projekt_M318
 
             }
         }
-            //Auto vervollständigungs Event
+        //Auto vervollständigungs Event
         private void cbBox1_TextUpdate(object sender, EventArgs e)
         {
             Autovervollständigung(cbBox1);
@@ -111,7 +148,22 @@ namespace Damian.T_Trainsetter_Projekt_M318
         {
             Autovervollständigung(cbBox2);
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btn2.Visible = false;
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            StringBuilder weiterleiten = new StringBuilder();
+            foreach (object selectedItem in listView1.Items)
+            {
+                weiterleiten.AppendLine(selectedItem.ToString());
+            }
+            MessageBox.Show(Convert.ToString(weiterleiten));
+        }
+
+
     }
 }
-
-
