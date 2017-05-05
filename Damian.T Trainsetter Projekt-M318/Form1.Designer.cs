@@ -122,7 +122,7 @@
             this.lstview1.Size = new System.Drawing.Size(853, 231);
             this.lstview1.TabIndex = 14;
             this.lstview1.UseCompatibleStateImageBehavior = false;
-            this.lstview1.SelectedIndexChanged += new System.EventHandler(this.lstview1_SelectedIndexChanged);
+            
             // 
             // dateTimePicker2
             // 
@@ -133,7 +133,6 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(215, 20);
             this.dateTimePicker2.TabIndex = 3;
             this.dateTimePicker2.Value = new System.DateTime(2017, 5, 4, 14, 16, 0, 0);
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // timer2
             // 
