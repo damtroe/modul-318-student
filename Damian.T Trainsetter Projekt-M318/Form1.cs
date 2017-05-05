@@ -65,7 +65,7 @@ namespace Damian.T_Trainsetter_Projekt_M318
                     lstview1.FullRowSelect = true;
 
                 }
-
+                //Leere CbBox abfangen
                 if (cbBox1.Text == "" || cbBox2.Text == "")
                 {
                     MessageBox.Show("Abfahrtsort muss ausgewählt werden!");
@@ -75,9 +75,6 @@ namespace Damian.T_Trainsetter_Projekt_M318
 
             }
         }
-
-
-        //Uhrzeit
 
 
 
@@ -132,18 +129,34 @@ namespace Damian.T_Trainsetter_Projekt_M318
         //Auto vervollständigungs Event
         private void cbBox1_TextUpdate(object sender, EventArgs e)
         {
-            Autovervollständigung(cbBox1);
+            try
+            {
+                Autovervollständigung(cbBox1);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Absturz Erkannt!\n\nSchreiben Sie langsamer");
+            }
         }
-
+        //Absturz abfangen(try,catch)
         private void cbBox2_TextUpdate(object sender, EventArgs e)
         {
-            Autovervollständigung(cbBox2);
+            try
+            {
+                Autovervollständigung(cbBox2);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Absturz Erkannt!\n\nSchreiben Sie langsamer");
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             btnweiterleiten.Visible = false;
         }
+
+
         //Weiterleiten Funktion
         private void btn2_Click(object sender, EventArgs e)
         {
@@ -164,19 +177,14 @@ namespace Damian.T_Trainsetter_Projekt_M318
              "Dauer: " + lstview1.Items[0].SubItems[5].Text);
         }
 
-        private void lstview1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //Feedback/Probleme
         private void button1_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("FeedBack An: datroe95@web.de\n\n Bei Problemen: 0799298401 ");
         }
+
+
     }
 }
